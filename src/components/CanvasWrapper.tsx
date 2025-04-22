@@ -1,3 +1,6 @@
+import Ball from './Ball';
+import Floor from './Floor';
+import { Physics } from '@react-three/cannon';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 
@@ -16,14 +19,15 @@ const CanvasWrapper = () => {
           aspect: window.innerWidth / window.innerHeight,
           near: 0.1,
           far: 100,
-          position: [0, 3, 3],
+          position: [1, 10, 4],
         }}
         dpr={Math.min(window.devicePixelRatio, 2)}
       >
-        <mesh rotation-x={-Math.PI / 2}>
-          <planeGeometry args={[10, 10]} />
-          <meshBasicMaterial />
-        </mesh>
+        <Physics>
+          <Ball />
+          <Floor />
+        </Physics>
+        <ambientLight intensity={5} />
         <OrbitControls makeDefault />
       </Canvas>
     </div>
