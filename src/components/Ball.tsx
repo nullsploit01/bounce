@@ -40,7 +40,7 @@ const Ball = () => {
     api.velocity.set(x, vy, z);
 
     // Jump
-    if (keys.has('Space') && Math.abs(vy) < 0.05) {
+    if (keys.has('Space')) {
       api.velocity.set(x, 10, z); // jump only if on/near ground
     }
   });

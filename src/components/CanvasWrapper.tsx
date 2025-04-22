@@ -5,6 +5,8 @@ import { Physics, useContactMaterial } from '@react-three/cannon';
 import { OrbitControls } from '@react-three/drei';
 import { Stats } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { useMemo } from 'react';
+import { Vector3 } from 'three';
 
 const CanvasWrapper = () => {
   const BouncyMaterial = () => {
@@ -14,6 +16,22 @@ const CanvasWrapper = () => {
     });
     return null;
   };
+
+  const pedestals = useMemo(() => {
+    const list = [];
+    let currentY = 0;
+
+    for (let i = 0; i < 100; i++) {
+      const x = (Math.random() - 0.5) * 100; // -10 to 10
+      const y = currentY + Math.random() * 3 + 3.5; // move upward
+      const z = (Math.random() - 0.5) * 20;
+      currentY = y;
+
+      list.push({ id: i, position: [x, y, z] as [number, number, number] });
+    }
+
+    return list;
+  }, []);
 
   return (
     <div
@@ -35,7 +53,9 @@ const CanvasWrapper = () => {
       >
         <Physics gravity={[0, -9.8, 0]}>
           <BouncyMaterial />
-          <Pedestal />
+          {pedestals.map(({ id, position }) => (
+            <Pedestal key={id} position={new Vector3(...position)} />
+          ))}
           <Ball />
           <Floor />
         </Physics>

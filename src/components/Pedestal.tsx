@@ -1,15 +1,16 @@
 import { useBox } from '@react-three/cannon';
+import { Vector3 } from 'three';
 
-const Pedestal = () => {
+const Pedestal = ({ position }: { position: Vector3 }) => {
   const [ref] = useBox(() => ({
     material: 'rubber',
-    position: [0, 5, 0],
+    position: [position.x, position.y, position.z],
     args: [20, 1, 10],
     type: 'Static',
   }));
 
   return (
-    <mesh ref={ref} position={[0, 5, 0]}>
+    <mesh ref={ref} position={position}>
       <boxGeometry args={[20, 1, 10]} />
       <meshStandardMaterial color={'green'} />
     </mesh>
