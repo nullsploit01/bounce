@@ -1,5 +1,6 @@
 import Ball from './Ball';
 import Floor from './Floor';
+import Pedestal from './Pedestal';
 import { Physics, useContactMaterial } from '@react-three/cannon';
 import { OrbitControls } from '@react-three/drei';
 import { Stats } from '@react-three/drei';
@@ -9,7 +10,7 @@ const CanvasWrapper = () => {
   const BouncyMaterial = () => {
     useContactMaterial('rubber', 'rubber', {
       friction: 0.7,
-      restitution: 0.4,
+      restitution: 0.8,
     });
     return null;
   };
@@ -32,8 +33,9 @@ const CanvasWrapper = () => {
         }}
         dpr={Math.min(window.devicePixelRatio, 2)}
       >
-        <Physics>
+        <Physics gravity={[0, -9.8, 0]}>
           <BouncyMaterial />
+          <Pedestal />
           <Ball />
           <Floor />
         </Physics>

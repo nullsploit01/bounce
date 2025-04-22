@@ -6,7 +6,7 @@ const Floor = () => {
   return (
     <mesh ref={ref} rotation-x={-Math.PI / 2}>
       <planeGeometry args={[100, 100]} />
-      <meshStandardMaterial color={'gray'} />
+      <meshStandardMaterial color={'pink'} />
     </mesh>
   );
 };

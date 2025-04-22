@@ -9,7 +9,7 @@ const Ball = () => {
       if (e.type === 'keydown') {
         switch (e.code) {
           case 'Space':
-            api.velocity.set(0, 7, 0); // bounce
+            api.velocity.set(0, 10, 0); // bounce
             break;
           case 'KeyA':
           case 'ArrowLeft':
