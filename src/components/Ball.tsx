@@ -6,9 +6,33 @@ const Ball = () => {
 
   useEffect(() => {
     const handleBounce = (e: any) => {
-      if (e.type === 'keydown' && e.code !== 'Space') return;
-
-      api.velocity.set(0, 7, 0); // Set upward velocity (bounce)
+      if (e.type === 'keydown') {
+        switch (e.code) {
+          case 'Space':
+            api.velocity.set(0, 7, 0); // bounce
+            break;
+          case 'KeyA':
+          case 'ArrowLeft':
+            api.velocity.set(-5, 0, 0); // move left
+            break;
+          case 'KeyD':
+          case 'ArrowRight':
+            api.velocity.set(5, 0, 0); // move right
+            break;
+          case 'KeyW':
+          case 'ArrowUp':
+            api.velocity.set(0, 0, -5); // move forward
+            break;
+          case 'KeyS':
+          case 'ArrowDown':
+            api.velocity.set(0, 0, 5); // move backward
+            break;
+          default:
+            break;
+        }
+      } else if (e.type === 'click') {
+        api.velocity.set(0, 7, 0); // bounce on mouse click too
+      }
     };
 
     window.addEventListener('keydown', handleBounce);

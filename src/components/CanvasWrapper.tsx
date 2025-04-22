@@ -8,7 +8,7 @@ import { Canvas } from '@react-three/fiber';
 const CanvasWrapper = () => {
   const BouncyMaterial = () => {
     useContactMaterial('rubber', 'rubber', {
-      friction: 0.1,
+      friction: 0.7,
       restitution: 0.4,
     });
     return null;
@@ -28,7 +28,7 @@ const CanvasWrapper = () => {
           aspect: window.innerWidth / window.innerHeight,
           near: 0.1,
           far: 100,
-          position: [1, 15, -30],
+          position: [1, 15, 30],
         }}
         dpr={Math.min(window.devicePixelRatio, 2)}
       >
