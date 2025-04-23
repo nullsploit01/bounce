@@ -47,7 +47,7 @@ const CanvasWrapper = () => {
           aspect: window.innerWidth / window.innerHeight,
           near: 0.1,
           far: 100,
-          position: [1, 15, 30],
+          position: [100, 15, 30],
         }}
         dpr={Math.min(window.devicePixelRatio, 2)}
       >
@@ -60,7 +60,7 @@ const CanvasWrapper = () => {
           <Floor />
         </Physics>
         <ambientLight intensity={5} />
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         <Stats />
       </Canvas>
     </div>
